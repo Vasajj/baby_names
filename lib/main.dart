@@ -1,7 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -28,6 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _buildBody(context),
     );
   }
+
+
 
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
